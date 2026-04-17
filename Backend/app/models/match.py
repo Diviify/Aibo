@@ -30,3 +30,7 @@ class Match(Base):
         foreign_keys=[user2_id],
         back_populates="matches_received",
     )
+    messages: Mapped[list["Chat"]] = relationship(
+        back_populates="match",
+        cascade="all, delete-orphan",
+    )

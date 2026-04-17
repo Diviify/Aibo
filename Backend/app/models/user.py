@@ -37,3 +37,7 @@ class User(Base):
         back_populates="user2",
         cascade="all, delete-orphan",
     )
+    messages: Mapped[list["Chat"]] = relationship(
+        back_populates="sender",
+        cascade="all, delete-orphan",
+    )
