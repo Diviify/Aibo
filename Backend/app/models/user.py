@@ -27,3 +27,13 @@ class User(Base):
         back_populates="user",
         cascade="all, delete-orphan",
     )
+    matches_sent: Mapped[list["Match"]] = relationship(
+        foreign_keys="Match.user1_id",
+        back_populates="user1",
+        cascade="all, delete-orphan",
+    )
+    matches_received: Mapped[list["Match"]] = relationship(
+        foreign_keys="Match.user2_id",
+        back_populates="user2",
+        cascade="all, delete-orphan",
+    )
